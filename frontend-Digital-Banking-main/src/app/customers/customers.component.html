@@ -1,0 +1,108 @@
+<div class="container mt-4">
+  <ng-container *ngIf="customers | async as listCustomers; else failureOrLading">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+        <h5 class="mb-0">
+          <i class="bi bi-people-fill me-2"></i>Customers
+        </h5>
+        <button class="btn btn-primary" routerLink="/new-customer">
+          <i class="bi bi-plus-circle me-2"></i>New Customer
+        </button>
+      </div>
+      
+      <div class="card-body">
+        <!-- Search Form -->
+        <div *ngIf="searchFormGroup" class="mb-4">
+          <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchCustomers()">
+            <div class="input-group">
+              <span class="input-group-text bg-light border-end-0">
+                <i class="bi bi-search text-muted"></i>
+              </span>
+              <input 
+                type="text" 
+                formControlName="keyword" 
+                class="form-control border-start-0 ps-0" 
+                placeholder="Search customers..."
+                (keyup)="handleSearchCustomers()"
+              >
+            </div>
+          </form>
+        </div>
+
+        <!-- Empty State -->
+        <div *ngIf="listCustomers.length === 0" class="text-center my-5 py-5">
+          <div class="empty-state">
+            <i class="bi bi-people display-1 text-muted mb-3"></i>
+            <h4 class="text-muted mb-2">No Customers Found</h4>
+            <p class="text-muted">There are no customers in the system yet.</p>
+          </div>
+        </div>
+
+        <!-- Customers Table -->
+        <div *ngIf="listCustomers.length > 0" class="table-responsive">
+          <table class="table table-hover align-middle custom-table mb-0">
+            <thead>
+              <tr>
+                <th class="border-0">Customer</th>
+                <th class="border-0">Email</th>
+                <th class="border-0 text-center">Accounts</th>
+                <th class="border-0 text-end">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of listCustomers">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="customer-avatar me-3">
+                      {{ c.name.charAt(0).toUpperCase() }}
+                    </div>
+                    <div>
+                      <h6 class="mb-0">{{c.name}}</h6>
+                      <small class="text-muted">ID: {{c.id}}</small>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="email-cell">{{c.email}}</span>
+                </td>
+                <td class="text-center">
+                  <button (click)="handleCustomerAccounts(c)" class="btn btn-light btn-sm">
+                    <i class="bi bi-wallet2 me-2"></i>View Accounts
+                  </button>
+                </td>
+                <td class="text-end">
+                  <button (click)="handleDeleteCustomer(c)" class="btn btn-icon btn-light btn-sm me-2" 
+                          title="Delete Customer">
+                    <i class="bi bi-trash text-danger"></i>
+                  </button>
+                  <button (click)="handleEditCustomer(c)" class="btn btn-icon btn-light btn-sm" 
+                          title="Edit Customer">
+                    <i class="bi bi-pencil text-primary"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Loading State -->
+  <ng-template #failureOrLading>
+    <ng-container *ngIf="errorMessage; else loading">
+      <div class="alert alert-danger">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        {{errorMessage}}
+      </div>
+    </ng-container>
+    <ng-template #loading>
+      <div class="text-center my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2 text-muted">Loading customers...</p>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

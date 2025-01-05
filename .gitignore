@@ -1,0 +1,46 @@
+# Backend
+backend-Digital-Banking-master/HELP.md
+backend-Digital-Banking-master/target/
+backend-Digital-Banking-master/!.mvn/wrapper/maven-wrapper.jar
+backend-Digital-Banking-master/!**/src/main/**/target/
+backend-Digital-Banking-master/!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Frontend
+frontend-Digital-Banking-main/node_modules
+frontend-Digital-Banking-main/.angular
+frontend-Digital-Banking-main/dist
+frontend-Digital-Banking-main/.env
+frontend-Digital-Banking-main/npm-debug.log
+frontend-Digital-Banking-main/.npm
+
+# OS
+.DS_Store
+Thumbs.db

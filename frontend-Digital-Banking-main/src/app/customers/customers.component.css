@@ -1,0 +1,215 @@
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.card-header {
+  background: linear-gradient(to right, #ffffff, #f8f9fa);
+}
+
+/* Search Input Styles */
+.input-group {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.input-group-text {
+  border: 1px solid #e9ecef;
+  background-color: #ffffff;
+}
+
+.form-control {
+  border: 1px solid #e9ecef;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+/* Table Styles */
+.custom-table {
+  margin: 0;
+}
+
+.custom-table thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+  padding: 1rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.custom-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+}
+
+.custom-table td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+/* Customer Avatar */
+.customer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Email Cell */
+.email-cell {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-light {
+  background-color: #f8f9fa;
+  border-color: #e9ecef;
+}
+
+.btn-light:hover {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+.empty-state h4 {
+  color: #343a40;
+  font-weight: 600;
+}
+
+.empty-state p {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+/* Loading Spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Alert Styles */
+.alert {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Edit Modal Styles */
+:root .swal2-container.edit-customer-modal {
+  z-index: 1500;
+}
+
+:root .swal2-container.edit-customer-modal .swal2-html-container {
+  margin: 1em 0;
+}
+
+:root .swal2-container.edit-customer-modal .swal2-input {
+  width: 100%;
+  margin: 0.5em 0;
+  padding: 0.5em 0.75em;
+  font-size: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+:root .swal2-container.edit-customer-modal .swal2-input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+:root .swal2-container.edit-customer-modal .form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #212529;
+  text-align: left;
+}
+
+:root .swal2-container.edit-customer-modal .mb-3 {
+  margin-bottom: 1rem;
+}
+
+:root .swal2-container.edit-customer-modal .swal2-validation-message {
+  background: #fff3cd;
+  color: #856404;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .custom-table td {
+    padding: 0.75rem;
+  }
+  
+  .customer-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+  }
+}

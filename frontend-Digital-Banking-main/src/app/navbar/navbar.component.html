@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="bi bi-bank me-2"></i>
+      <span>Digital Banking</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="bi bi-house-door me-1"></i>Home
+          </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/accounts" routerLinkActive="active">
+            <i class="bi bi-wallet2 me-1"></i>Accounts
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-people me-1"></i>Customers
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/customers">
+                <i class="bi bi-search me-2"></i>Search Customers
+              </a>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" routerLink="/new-customer">
+                <i class="bi bi-person-plus me-2"></i>New Customer
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center">
+        <div class="nav-item">
+          <div class="nav-link d-flex align-items-center">
+            <div class="avatar me-2">H</div>
+            <span class="d-none d-lg-inline">Hamza taki</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer for fixed navbar -->
+<div class="navbar-spacer"></div>

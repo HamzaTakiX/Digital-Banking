@@ -1,0 +1,163 @@
+<div class="container mt-4">
+  <!-- Welcome Section -->
+  <div class="welcome-section mb-4">
+    <h1 class="display-5 mb-3">Welcome to Digital Banking</h1>
+    <p class="text-muted lead">Your financial dashboard overview</p>
+  </div>
+
+  <!-- Stats Cards Row -->
+  <div class="row g-4 mb-4">
+    <!-- Total Balance Card -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="stat-icon bg-primary-subtle">
+            <i class="bi bi-wallet2"></i>
+          </div>
+          <h6 class="text-muted mb-2">Total Balance</h6>
+          <h3 class="mb-0">${{totalBalance | number:'1.2-2'}}</h3>
+          <div class="stat-trend positive mt-2">
+            <i class="bi bi-arrow-up"></i>
+            <span>3.2% from last month</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Accounts Card -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="stat-icon bg-success-subtle">
+            <i class="bi bi-credit-card"></i>
+          </div>
+          <h6 class="text-muted mb-2">Total Accounts</h6>
+          <h3 class="mb-0">{{totalAccounts}}</h3>
+          <div class="stat-trend mt-2">
+            <span class="text-muted">Active accounts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Customers Card -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="stat-icon bg-info-subtle">
+            <i class="bi bi-people"></i>
+          </div>
+          <h6 class="text-muted mb-2">Total Customers</h6>
+          <h3 class="mb-0">{{totalCustomers}}</h3>
+          <div class="stat-trend positive mt-2">
+            <i class="bi bi-arrow-up"></i>
+            <span>2 new this week</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Operations Card -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card stat-card">
+        <div class="card-body">
+          <div class="stat-icon bg-warning-subtle">
+            <i class="bi bi-arrow-left-right"></i>
+          </div>
+          <h6 class="text-muted mb-2">Total Operations</h6>
+          <h3 class="mb-0">{{totalOperations}}</h3>
+          <div class="stat-trend mt-2">
+            <span class="text-muted">Last 30 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity Section -->
+  <div class="row g-4">
+    <!-- Recent Operations -->
+    <div class="col-12 col-lg-8">
+      <div class="card">
+        <div class="card-header bg-white py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Recent Operations</h5>
+            <button class="btn btn-light btn-sm" routerLink="/accounts">
+              View All <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Operation</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let op of recentOperations">
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="operation-icon me-2" [ngClass]="op.type === 'DEBIT' ? 'debit' : 'credit'">
+                        <i class="bi" [ngClass]="op.type === 'DEBIT' ? 'bi-arrow-up-right' : 'bi-arrow-down-left'"></i>
+                      </div>
+                      <div>
+                        <div class="fw-500">{{op.type}}</div>
+                        <small class="text-muted">ID: {{op.id}}</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span [ngClass]="op.type === 'DEBIT' ? 'text-danger' : 'text-success'">
+                      {{op.type === 'DEBIT' ? '-' : '+'}}${{op.amount}}
+                    </span>
+                  </td>
+                  <td>{{op.operationDate | date:'medium'}}</td>
+                  <td>
+                    <span class="badge rounded-pill bg-success-subtle text-success">Success</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Customers -->
+    <div class="col-12 col-lg-4">
+      <div class="card">
+        <div class="card-header bg-white py-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Recent Customers</h5>
+            <button class="btn btn-light btn-sm" routerLink="/customers">
+              View All <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body p-0">
+          <div class="list-group list-group-flush">
+            <div class="list-group-item" *ngFor="let customer of recentCustomers">
+              <div class="d-flex align-items-center">
+                <div class="customer-avatar me-3">
+                  {{customer.name.charAt(0).toUpperCase()}}
+                </div>
+                <div class="flex-grow-1">
+                  <h6 class="mb-0">{{customer.name}}</h6>
+                  <small class="text-muted">{{customer.email}}</small>
+                </div>
+                <button class="btn btn-light btn-sm" [routerLink]="['/customer-accounts', customer.id]">
+                  <i class="bi bi-wallet2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
